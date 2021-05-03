@@ -1,0 +1,54 @@
+<div class="row mt-3">
+    <div class="col-3"></div>
+    <div class="col-3">Students</div>
+    <div class="col">
+       
+        <select style="width:200px" #cricket (change)="update($event)">
+            <option *ngFor="let student of students" [value]="student">
+                {{student}}
+            </option>   
+        </select>
+        <br>
+        <p></p>
+        <div *ngIf="students.length==0">
+            <p>No Students enrolled yet</p>
+        </div>
+        <div *ngIf="savedStudentName!=''">
+            <p>Mr/Mrs. <b>{{savedStudentName}}</b> enrolled successfully </p>
+        </div>
+    </div>
+</div> 
+
+
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col">
+        
+        <button class="btn-primary" (click)="enableNewStudent()" >Add New Student</button>
+        
+    </div>
+</div>
+
+
+<div *ngIf="isNewStudentAdded">
+    <div class="row">
+        <div class="col-3"></div>
+        <div class="col-3"></div>
+        <div class="col">
+            <div class="row">
+            
+            <div class="col-6"><input type="text" class="form-control" id="name" [(ngModel)]="newStudentName" name="name"></div> 
+            <div class="col-1"><button type="submit" class="btn btn-primary" (click)="addNewStudent(newStudentName)"> 
+                <i class="fa fa-check" aria-hidden="true"> </i>
+            </button></div>
+            <div class="col col-offset-2"><button type="submit" class="btn btn-danger" (click)="cancelAdd()" > <i class="fa fa-times" aria-hidden="true"> </i></button></div>
+            <div class="col"></div>
+    
+        </div>    
+            
+        </div>
+           
+        </div>
+     
+    </div>  

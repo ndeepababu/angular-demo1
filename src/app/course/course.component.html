@@ -1,0 +1,55 @@
+<div class="row mt-3">
+    <div class="col-3"></div>
+    <div class="col-3">Courses</div>
+    <div class="col">
+       
+        <select style="width:200px" #cricket (change)="update($event)">
+            <option *ngFor="let course of courses" [value]="course">
+                {{course}}
+            </option>   
+        </select>
+        <br>
+        <p></p>
+        <div *ngIf="courses.length==0">
+            <p>No courses, Please enter some courses</p>
+        </div>
+        <div *ngIf="savedCourseName!=''">
+            <p>You have successfully saved <b>{{savedCourseName}}</b> Course</p>
+        </div>
+    </div>
+</div>  
+<div class="row">
+    <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col">
+        
+        <button class="btn-primary" (click)="enableNewCourse()" >Add New Course</button>
+        
+    </div>
+</div>
+
+<div *ngIf=isNewCourseAdded>
+<div class="row">
+ 
+   
+        <div class="col-3"></div>
+    <div class="col-3"></div>
+    <div class="col">
+        <div class="row">
+        
+        <div class="col-6"><input type="text" class="form-control" id="name" [(ngModel)]="newCourseName" name="name"></div> 
+        <div class="col-1"><button type="submit" class="btn btn-primary" (click)="addNewCourse(newCourseName)"> 
+            <i class="fa fa-check" aria-hidden="true"> </i>
+        </button></div>
+        <div class="col col-offset-2"><button type="submit" class="btn btn-danger" (click)="cancelAdd()" > <i class="fa fa-times" aria-hidden="true"> </i></button></div>
+        <div class="col"></div>
+
+    </div>    
+        
+    </div>
+       
+    </div>
+ 
+</div>  
+
+<app-student [course]="selected"></app-student>
